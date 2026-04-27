@@ -115,6 +115,7 @@ type PaymentRequest struct {
 	OrderId       string                 `protobuf:"bytes,1,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
 	Amount        float64                `protobuf:"fixed64,2,opt,name=amount,proto3" json:"amount,omitempty"`
 	Currency      string                 `protobuf:"bytes,3,opt,name=currency,proto3" json:"currency,omitempty"`
+	CustomerEmail string                 `protobuf:"bytes,4,opt,name=customer_email,json=customerEmail,proto3" json:"customer_email,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -166,6 +167,13 @@ func (x *PaymentRequest) GetAmount() float64 {
 func (x *PaymentRequest) GetCurrency() string {
 	if x != nil {
 		return x.Currency
+	}
+	return ""
+}
+
+func (x *PaymentRequest) GetCustomerEmail() string {
+	if x != nil {
+		return x.CustomerEmail
 	}
 	return ""
 }
@@ -239,11 +247,12 @@ const file_payment_v1_payment_proto_rawDesc = "" +
 	"\x13ListPaymentsRequest\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\"O\n" +
 	"\x14ListPaymentsResponse\x127\n" +
-	"\bpayments\x18\x01 \x03(\v2\x1b.payment.v1.PaymentResponseR\bpayments\"_\n" +
+	"\bpayments\x18\x01 \x03(\v2\x1b.payment.v1.PaymentResponseR\bpayments\"\x86\x01\n" +
 	"\x0ePaymentRequest\x12\x19\n" +
 	"\border_id\x18\x01 \x01(\tR\aorderId\x12\x16\n" +
 	"\x06amount\x18\x02 \x01(\x01R\x06amount\x12\x1a\n" +
-	"\bcurrency\x18\x03 \x01(\tR\bcurrency\"\x8f\x01\n" +
+	"\bcurrency\x18\x03 \x01(\tR\bcurrency\x12%\n" +
+	"\x0ecustomer_email\x18\x04 \x01(\tR\rcustomerEmail\"\x8f\x01\n" +
 	"\x0fPaymentResponse\x12%\n" +
 	"\x0etransaction_id\x18\x01 \x01(\tR\rtransactionId\x12\x16\n" +
 	"\x06status\x18\x02 \x01(\tR\x06status\x12=\n" +
